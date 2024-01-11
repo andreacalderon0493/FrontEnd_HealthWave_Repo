@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PostPage from "./pages/PostPage/PostPage";
+import DirectMessagePage from "./pages/DirectMessagePage/DirectMessagePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -33,6 +34,14 @@ function App() {
           element={
             <PrivateRoute>
               <PostPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Message"
+          element={
+            <PrivateRoute>
+              <DirectMessagePage />
             </PrivateRoute>
           }
         />
