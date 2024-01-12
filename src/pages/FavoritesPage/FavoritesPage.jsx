@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const FavoritesPage = ({}) => {
   const [user, token] = useAuth();
   const [favorites, setFavorites] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchFavorites();
@@ -14,7 +15,7 @@ const FavoritesPage = ({}) => {
   const fetchFavorites = async () => {
     try {
       let response = await axios.get(
-        "https://localhost:5001/api/favorites/myFavorites",
+        "https://localhost:5001/api/favorites/myfavorites",
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -22,17 +23,34 @@ const FavoritesPage = ({}) => {
         }
       );
       setFavorites(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error.response.data);
     }
   };
+  //SearchBar looking to filter through favorites
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const filteredFavorites = favorites.filter((favorite) =>
+      favorite.post.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFavorites(filteredFavorites);
+  };
   return (
     <div>
       <h1>Saved</h1>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
       {favorites &&
         favorites.map((favorite) => (
-          <div key={favorite.id}>{<h2>{favorite.post.text}</h2>}</div>
+          <div key={favorite.id}>
+            <h2>{favorite.post.text}</h2>
+          </div>
         ))}
     </div>
   );

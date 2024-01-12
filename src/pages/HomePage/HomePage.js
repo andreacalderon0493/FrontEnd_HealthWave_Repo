@@ -39,6 +39,7 @@ const HomePage = () => {
           },
         }
       );
+      console.log(response);
       alert(response.data);
     } catch (error) {
       console.log(error.response.data);
@@ -51,6 +52,7 @@ const HomePage = () => {
       {posts &&
         posts.map((post) => (
           <div key={post.id}>
+            <p>{post.userName}</p>
             <p>{post.text}</p>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
           </div>
