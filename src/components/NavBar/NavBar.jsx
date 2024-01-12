@@ -17,7 +17,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            to="/PostPage"
+            to="/AddPostPage"
             style={{ textDecoration: "none", color: "white" }}
           >
             <b>Post</b>
@@ -42,6 +42,14 @@ const Navbar = () => {
             style={{ textDecoration: "none", color: "white" }}
           >
             <b>My Profile</b>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/MyFavorites"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>Favorites</b>
           </Link>
         </li>
         <li>

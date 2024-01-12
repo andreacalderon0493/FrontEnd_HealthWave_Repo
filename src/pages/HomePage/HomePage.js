@@ -1,27 +1,28 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import PostList from "../../components/PostList/PostList";
+import ImageList from "../../components/ImageList/ImageList";
 import axios from "axios";
 
 const HomePage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
   // The "token" value is the JWT token sent from the backend that you will send back in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchCars();
+    fetchPosts();
   }, [token]);
 
-  const fetchCars = async () => {
+  const fetchPosts = async () => {
     try {
-      let response = await axios.get("https://localhost:5001/api/cars/myCars", {
+      let response = await axios.get("https://localhost:5001/api/posts", {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
-      setCars(response.data);
+      setPosts(response.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -31,12 +32,9 @@ const HomePage = () => {
     <div className="container">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
+      {posts && posts.map((post) => <p key={post.id}>{post.text}</p>)}
+      <PostList />
+      <ImageList />
     </div>
   );
 };

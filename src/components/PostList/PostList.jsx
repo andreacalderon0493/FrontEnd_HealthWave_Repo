@@ -5,7 +5,7 @@ import axios from "axios";
 const PostList = ({}) => {
   return (
     <div>
-      <h1>List of Posts</h1>
+      <h2>Get all posts of people, shared and people just posting</h2>
     </div>
   );
 };

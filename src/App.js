@@ -6,7 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import PostPage from "./pages/PostPage/PostPage";
+import AddPostPage from "./pages/AddPostPage/AddPostPage";
 import DirectMessagePage from "./pages/DirectMessagePage/DirectMessagePage";
 
 // Component Imports
@@ -30,10 +30,10 @@ function App() {
           }
         />
         <Route
-          path="/PostPage"
+          path="/AddPostPage"
           element={
             <PrivateRoute>
-              <PostPage />
+              <AddPostPage />
             </PrivateRoute>
           }
         />
