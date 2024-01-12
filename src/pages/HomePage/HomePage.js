@@ -28,11 +28,33 @@ const HomePage = () => {
     }
   };
 
+  const handleFavorite = async (id) => {
+    try {
+      let response = await axios.post(
+        `https://localhost:5001/api/Favorites/favorites/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <div className="container">
-      {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      {posts && posts.map((post) => <p key={post.id}>{post.text}</p>)}
+      {posts &&
+        posts.map((post) => (
+          <div key={post.id}>
+            <p>{post.text}</p>
+            <button onClick={() => handleFavorite(post.id)}>Favorite</button>
+          </div>
+        ))}
       <PostList />
       <ImageList />
     </div>

@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddPostPage from "./pages/AddPostPage/AddPostPage";
 import DirectMessagePage from "./pages/DirectMessagePage/DirectMessagePage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -42,6 +43,14 @@ function App() {
           element={
             <PrivateRoute>
               <DirectMessagePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/myFavorites"
+          element={
+            <PrivateRoute>
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
