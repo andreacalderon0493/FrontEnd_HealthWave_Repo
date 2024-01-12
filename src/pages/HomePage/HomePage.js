@@ -46,6 +46,24 @@ const HomePage = () => {
     }
   };
 
+  const handleLike = async (id) => {
+    try {
+      let response = await axios.put(
+        `https://localhost:5001/api/posts/like/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      alert(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <div className="container">
       <h1>Home Page for {user.userName}!</h1>
@@ -55,6 +73,8 @@ const HomePage = () => {
             <p>{post.userName}</p>
             <p>{post.text}</p>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
+            <button onClick={() => handleLike(post.id)}>Like</button>
+            <p>{post.likes}</p>
           </div>
         ))}
       <PostList />
