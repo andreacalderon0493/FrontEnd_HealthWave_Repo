@@ -48,8 +48,8 @@ const HomePage = () => {
 
   const handleLike = async (id) => {
     try {
-      let response = await axios.put(
-        `https://localhost:5001/api/posts/like/${id}`,
+      let response = await axios.post(
+        `https://localhost:5001/api/Likes/likes/${id}`,
         {},
         {
           headers: {
@@ -60,7 +60,7 @@ const HomePage = () => {
       console.log(response);
       alert(response.data);
     } catch (error) {
-      console.log(error.response.data);
+      console.error(error);
     }
   };
 
@@ -70,11 +70,12 @@ const HomePage = () => {
       {posts &&
         posts.map((post) => (
           <div key={post.id}>
-            <p>{post.userName}</p>
+            <p>{post.user.userName}</p>
             <p>{post.text}</p>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
-            <button onClick={() => handleLike(post.id)}>Like</button>
-            <p>{post.likes}</p>
+            <button onClick={() => handleLike(post.id)}>
+              Like {post.like}
+            </button>
           </div>
         ))}
       <PostList />
