@@ -13,28 +13,30 @@ const MyProfilePage = ({}) => {
   const getMyPosts = async () => {
     try {
       let response = await axios.get(
-        "http://localhost:5001/api/posts/myPosts",
+        "https://localhost:5001/api/posts/myPosts",
         {
           headers: {
             Authorization: "Bearer " + token,
           },
         }
       );
+      console.log("Response:", response);
       setPosts(response.data);
-      console.log(response.data);
+      console.log("Data:", response.data);
     } catch (error) {
-      console.log(error.response.data);
+      console.log("Error:", error);
     }
   };
 
   return (
     <div>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.text}</h2>
-          <h3>{post.likes}</h3>
-        </div>
-      ))}
+      {posts &&
+        posts.map((post) => (
+          <div key={post.id}>
+            <h2>{post.text}</h2>
+            <h3>{post.likes}</h3>
+          </div>
+        ))}
     </div>
   );
 };
