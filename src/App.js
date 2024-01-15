@@ -10,6 +10,7 @@ import AddPostPage from "./pages/AddPostPage/AddPostPage";
 import DirectMessagePage from "./pages/DirectMessagePage/DirectMessagePage";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import MyProfilePage from "./pages/MyProfilePage/MyProfilePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -60,6 +61,14 @@ function App() {
           element={
             <PrivateRoute>
               <MyProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Search"
+          element={
+            <PrivateRoute>
+              <SearchPage />
             </PrivateRoute>
           }
         />
