@@ -22,14 +22,6 @@ const AddPostPage = ({}) => {
       );
 
       console.log(response);
-      alert(response.data);
-
-      // // Update the local state with the new post
-      // if (response && response.data) {
-      //   setPosts((prevPosts) => [...prevPosts, response.data]);
-      // } else {
-      //   console.error("API call failed or response does not contain data");
-      // }
     } catch (error) {
       console.error("An error occurred while posting:", error);
     }
