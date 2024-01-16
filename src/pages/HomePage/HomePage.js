@@ -4,6 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import PostList from "../../components/PostList/PostList";
 import ImageList from "../../components/ImageList/ImageList";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import FolllowingList from "../../components/FollowingList/FollowingList";
 
 const HomePage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
@@ -57,7 +59,7 @@ const HomePage = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       alert(response.data);
     } catch (error) {
       console.error(error);
@@ -71,10 +73,16 @@ const HomePage = () => {
         posts.map((post) => (
           <div key={post.id}>
             <p>{post.user.userName}</p>
+            <FolllowingList />
             <p>{post.text}</p>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
             <button onClick={() => handleLike(post.id)}>
               Like {post.like}
+            </button>
+            <button
+              onClick={() => (window.location.href = `/addcomment/${post.id}`)}
+            >
+              Add Comment
             </button>
           </div>
         ))}

@@ -11,6 +11,7 @@ import DirectMessagePage from "./pages/DirectMessagePage/DirectMessagePage";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import MyProfilePage from "./pages/MyProfilePage/MyProfilePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import AddCommentPage from "./pages/AddCommentPage/AddCommentPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -69,6 +70,14 @@ function App() {
           element={
             <PrivateRoute>
               <SearchPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/addcomment/:postId"
+          element={
+            <PrivateRoute>
+              <AddCommentPage />
             </PrivateRoute>
           }
         />
