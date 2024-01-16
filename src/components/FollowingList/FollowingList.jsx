@@ -1,34 +1,43 @@
 import axios from "axios";
-import react from "react";
+import react, { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 
-const FolllowingList = ({}) => {
+const FolllowingList = ({ followings, setFollowings, userId }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [user, token] = useAuth();
 
-  const handleFollow = async (acceptingId) => {
-    try {
-      const response = await axios.post(
-        `https://localhost:5001/api/Followings/${acceptingId}`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  const handleFollow = async () => {
+    console.log("userId:", userId);
+    if (!followings.some((following) => following.Id === userId)) {
+      try {
+        let response = await axios.post(
+          `https://localhost:5001/api/Followings/${userId}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("response:", response.data.status);
+        alert(JSON.stringify(response.data.status));
+        // alert(response.data);
+        setFollowings([...followings, response.data]);
+      } catch (error) {
+        console.log(error.response.data);
       }
-
-      setIsFollowing(true);
-    } catch (error) {
-      console.error("Error:", error);
+    } else {
+      alert("You are already following this user");
     }
   };
+
   return (
-    <div>{!isFollowing && <button onClick={handleFollow}>Follow</button>}</div>
+    <div>
+      {!isFollowing && (
+        <button onClick={() => handleFollow(userId)}>Follow</button>
+      )}
+    </div>
   );
 };
 

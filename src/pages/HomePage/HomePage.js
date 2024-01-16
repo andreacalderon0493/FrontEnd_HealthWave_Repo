@@ -12,9 +12,31 @@ const HomePage = () => {
   // The "token" value is the JWT token sent from the backend that you will send back in the header of any request requiring authentication
   const [user, token] = useAuth();
   const [posts, setPosts] = useState([]);
+  const [followings, setFollowings] = useState([]);
 
   useEffect(() => {
     fetchPosts();
+  }, [token]);
+
+  useEffect(() => {
+    const fetchFollowings = async () => {
+      try {
+        let response = await axios.get(
+          "https://localhost:5001/api/followings/myFollowings",
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        setFollowings(response.data);
+        console.log("response.data:", response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    };
+
+    fetchFollowings();
   }, [token]);
 
   const fetchPosts = async () => {
@@ -73,7 +95,12 @@ const HomePage = () => {
         posts.map((post) => (
           <div key={post.id}>
             <p>{post.user.userName}</p>
-            <FolllowingList />
+            <FolllowingList
+              followings={followings}
+              setFollowings={setFollowings}
+              userId={post.user.id}
+            />
+
             <p>{post.text}</p>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
             <button onClick={() => handleLike(post.id)}>
