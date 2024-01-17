@@ -38,12 +38,12 @@ export default function ImageForm() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label>Title:</label>
+      {/* <label>Title:</label>
       <input
         type="text"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
-      />
+      /> */}
       {/* <label>Description:</label>
       <input
         value={description}
@@ -56,7 +56,7 @@ export default function ImageForm() {
         accept="image/jpeg,image/png,image/gif"
         onChange={(e) => setImage(e.target.files[0])}
       />
-      <button type="submit">Submit Photo!</button>
+      {/* <button type="submit">Submit Photo!</button> */}
     </form>
   );
 }

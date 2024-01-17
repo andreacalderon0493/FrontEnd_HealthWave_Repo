@@ -20,9 +20,8 @@ const FolllowingList = ({ followings, setFollowings, userId }) => {
             },
           }
         );
-        console.log("response:", response.data.status);
+        console.log(response.data.status);
         alert(JSON.stringify(response.data.status));
-        // alert(response.data);
         setFollowings([...followings, response.data]);
       } catch (error) {
         console.log(error.response.data);

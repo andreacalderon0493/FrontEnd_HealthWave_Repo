@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import PostList from "../../components/PostList/PostList";
 import ImageList from "../../components/ImageList/ImageList";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -30,7 +29,7 @@ const HomePage = () => {
           }
         );
         setFollowings(response.data);
-        console.log("response.data:", response.data);
+        // console.log("response.data:", response.data);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -63,7 +62,7 @@ const HomePage = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       alert(response.data);
     } catch (error) {
       console.log(error.response.data);
@@ -113,7 +112,6 @@ const HomePage = () => {
             </button>
           </div>
         ))}
-      <PostList />
       <ImageList />
     </div>
   );

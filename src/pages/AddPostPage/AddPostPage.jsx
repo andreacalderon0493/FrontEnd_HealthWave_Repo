@@ -1,7 +1,6 @@
 import react from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import PostList from "../../components/PostList/PostList";
 import PostImage from "../../components/PostImage/PostImage";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
@@ -33,6 +32,7 @@ const AddPostPage = ({}) => {
   );
   return (
     <div>
+      <PostImage />
       <form onSubmit={handleSubmit}>
         <textarea
           type="text"
@@ -43,7 +43,6 @@ const AddPostPage = ({}) => {
         />
         <button type="submit">Submit</button>
       </form>
-      <PostImage />
     </div>
   );
 };
