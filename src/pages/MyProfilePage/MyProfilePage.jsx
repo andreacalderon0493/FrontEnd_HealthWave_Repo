@@ -30,7 +30,7 @@ const MyProfilePage = ({}) => {
   };
 
   return (
-    <div>
+    <div className="flex-item">
       {allPosts &&
         allPosts.posts &&
         allPosts.posts.map((post) => (
@@ -44,8 +44,8 @@ const MyProfilePage = ({}) => {
         allPosts.sharedPosts &&
         allPosts.sharedPosts.map((sharedPost) => (
           <div key={sharedPost.id}>
-            <h3>Repost</h3>
-            <h3>{sharedPost.post.user.userName}</h3>
+            <h3>Repost from {sharedPost.post.user.userName} </h3>
+            <h3>{sharedPost.post.title}</h3>
             <h2>{sharedPost.post.text}</h2>
           </div>
         ))}

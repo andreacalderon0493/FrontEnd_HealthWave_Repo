@@ -92,7 +92,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      {/* <h1>Home Page for {user.userName}!</h1> */}
+      <h1>Welcome {user.userName}!</h1>
       {posts &&
         posts.map((post) => (
           <div key={post.id}>

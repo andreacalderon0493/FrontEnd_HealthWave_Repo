@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./FavoritesPage.css";
 
 const FavoritesPage = ({}) => {
   const [user, token] = useAuth();
@@ -36,8 +37,8 @@ const FavoritesPage = ({}) => {
     setFavorites(filteredFavorites);
   };
   return (
-    <div>
-      <h1>Saved</h1>
+    <div className="flex">
+      <h1>Save For Later</h1>
       <form onSubmit={handleSearch}>
         <input
           type="text"
@@ -46,10 +47,11 @@ const FavoritesPage = ({}) => {
         />
         <button type="submit">Search</button>
       </form>
+
       {favorites &&
         favorites.map((favorite) => (
-          <div key={favorite.id}>
-            <h3>Save For Later</h3>
+          <div className="container" key={favorite.id}>
+            <h3>{favorite.post.title}</h3>
             <h2>{favorite.post.text}</h2>
           </div>
         ))}

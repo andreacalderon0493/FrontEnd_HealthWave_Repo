@@ -11,6 +11,7 @@
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  color: whitesmoke
 }
 
 p {
@@ -18,7 +19,7 @@ p {
 }
 
 button {
-  background-color: transparent;
+  background-color: white;
   border: 2px solid rgb(34, 47, 57);
   color: rgb(34, 55, 72);
   font-size: 1rem;
@@ -29,8 +30,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: rgb(86, 64, 141);
-  background: rgb(213, 176, 247);
+  color: rgb(39, 66, 58);
+  background: rgb(175, 172, 178);
 }
 
 .container {
@@ -38,6 +39,17 @@ button:hover {
   max-width: 600px;
   overflow: auto;
   text-align: center;
+  color: white;
+  
+}
+.flex-item {
+  display: flex;
+  margin: 0 auto;
+  max-width: 600px;
+  overflow: auto;
+  text-align: center;
+  color: white;
+  
 }
 
 .form {

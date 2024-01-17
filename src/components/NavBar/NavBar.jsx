@@ -59,7 +59,7 @@ const Navbar = () => {
             to="/MyProfile"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <b>My Profile</b>
+            <b>Profile</b>
           </Link>
         </li>
         <li>

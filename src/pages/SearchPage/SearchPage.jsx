@@ -34,7 +34,7 @@ const SearchPage = ({}) => {
 
   return (
     <div>
-      <div className="flex-item">
+      <div>
         <label>Search</label>
         <input
           type="text"
