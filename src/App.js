@@ -12,6 +12,7 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import MyProfilePage from "./pages/MyProfilePage/MyProfilePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import AddCommentPage from "./pages/AddCommentPage/AddCommentPage";
+import PostImagePage from "./pages/PostImagePage/PostImagePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRoute>
               <AddPostPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/PostImage"
+          element={
+            <PrivateRoute>
+              <PostImagePage />
             </PrivateRoute>
           }
         />

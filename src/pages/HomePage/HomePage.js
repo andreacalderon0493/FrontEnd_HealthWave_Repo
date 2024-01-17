@@ -1,10 +1,12 @@
 import React from "react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import ImageList from "../../components/ImageList/ImageList";
-import axios from "axios";
 import { Link } from "react-router-dom";
+//components
+import ImageList from "../../components/ImageList/ImageList";
 import FolllowingList from "../../components/FollowingList/FollowingList";
+import SharePost from "../../components/SharePost/SharePost";
 
 const HomePage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
@@ -46,6 +48,7 @@ const HomePage = () => {
         },
       });
       setPosts(response.data);
+      console.log("response.data:", response.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -80,7 +83,7 @@ const HomePage = () => {
           },
         }
       );
-      // console.log(response);
+      //console.log(response.data);
       alert(response.data);
     } catch (error) {
       console.error(error);
@@ -89,18 +92,18 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <h1>Home Page for {user.userName}!</h1>
+      {/* <h1>Home Page for {user.userName}!</h1> */}
       {posts &&
         posts.map((post) => (
           <div key={post.id}>
-            <p>{post.user.userName}</p>
+            <h3>{post.user.userName}</h3>
             <FolllowingList
               followings={followings}
               setFollowings={setFollowings}
               userId={post.user.id}
             />
-
-            <p>{post.text}</p>
+            <h2>{post.title}</h2>
+            <h3>{post.text}</h3>
             <button onClick={() => handleFavorite(post.id)}>Favorite</button>
             <button onClick={() => handleLike(post.id)}>
               Like {post.like}
@@ -110,6 +113,7 @@ const HomePage = () => {
             >
               Add Comment
             </button>
+            <SharePost postId={post.id} />
           </div>
         ))}
       <ImageList />

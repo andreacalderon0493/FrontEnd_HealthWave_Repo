@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 export default function ImageForm() {
   // State variables for the form inputs
   const [title, setTitle] = useState("");
-  //   const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [user, token] = useAuth();
 
@@ -38,25 +38,24 @@ export default function ImageForm() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      {/* <label>Title:</label>
+      <label>Title:</label>
       <input
         type="text"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
-      /> */}
-      {/* <label>Description:</label>
+      />
+      <label>Description:</label>
       <input
         value={description}
         onChange={(event) => setDescription(event.target.value)}
-      /> */}
-
-      {/* Image file input */}
+      />
+      Image file input
       <input
         type="file"
         accept="image/jpeg,image/png,image/gif"
         onChange={(e) => setImage(e.target.files[0])}
       />
-      {/* <button type="submit">Submit Photo!</button> */}
+      <button type="submit">Submit!</button>
     </form>
   );
 }

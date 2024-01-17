@@ -34,8 +34,9 @@ const CommentsList = ({}) => {
       {comments &&
         comments.map((comment) => (
           <div key={comment.id}>
-            <p>{comment.user.userName}</p>
-            <p>{comment.text}</p>
+            <h3>{comment.user.userName}</h3>
+            <h3>{comment.title}</h3>
+            <h2>{comment.text}</h2>
           </div>
         ))}
     </div>

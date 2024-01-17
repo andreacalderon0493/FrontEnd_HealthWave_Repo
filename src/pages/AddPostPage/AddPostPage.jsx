@@ -1,7 +1,6 @@
 import react from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import PostImage from "../../components/PostImage/PostImage";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 
@@ -32,8 +31,14 @@ const AddPostPage = ({}) => {
   );
   return (
     <div>
-      <PostImage />
       <form onSubmit={handleSubmit}>
+        <input
+          type="title"
+          name="title"
+          value={formData.title}
+          onChange={handleInputChange}
+          placeholder="Enter your post Title"
+        />
         <textarea
           type="text"
           name="text"

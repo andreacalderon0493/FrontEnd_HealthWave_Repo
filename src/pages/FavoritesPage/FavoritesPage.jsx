@@ -49,6 +49,7 @@ const FavoritesPage = ({}) => {
       {favorites &&
         favorites.map((favorite) => (
           <div key={favorite.id}>
+            <h3>Save For Later</h3>
             <h2>{favorite.post.text}</h2>
           </div>
         ))}

@@ -48,7 +48,7 @@ const SearchPage = ({}) => {
       {filteredPosts &&
         filteredPosts.map((post) => (
           <div key={post.id}>
-            <a href={`/post/${post.id}`}>{post.text}</a>
+            <a href={`/post/${post.id}`}>{post.title}</a>
           </div>
         ))}
     </div>

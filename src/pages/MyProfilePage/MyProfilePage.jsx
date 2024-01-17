@@ -21,10 +21,9 @@ const MyProfilePage = ({}) => {
           },
         }
       );
-      console.log("Response:", response);
+
       // setPosts(response.data);
       setAllPosts(response.data);
-      console.log("Data:", response.data);
     } catch (error) {
       console.log("Error:", error);
     }
@@ -37,6 +36,7 @@ const MyProfilePage = ({}) => {
         allPosts.posts.map((post) => (
           <div key={post.id}>
             <h3>{post.user.userName}</h3>
+            <h3>{post.title}</h3>
             <h2>{post.text}</h2>
           </div>
         ))}
@@ -44,6 +44,7 @@ const MyProfilePage = ({}) => {
         allPosts.sharedPosts &&
         allPosts.sharedPosts.map((sharedPost) => (
           <div key={sharedPost.id}>
+            <h3>Repost</h3>
             <h3>{sharedPost.post.user.userName}</h3>
             <h2>{sharedPost.post.text}</h2>
           </div>

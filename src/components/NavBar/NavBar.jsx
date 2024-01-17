@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
@@ -7,6 +8,9 @@ import "./NavBar.css";
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
   return (
     <div className="navBar">
       <ul>
@@ -16,12 +20,26 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link
-            to="/AddPostPage"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <b>Post</b>
-          </Link>
+          <button onClick={() => setDropdownVisible(!dropdownVisible)}>
+            Post
+          </button>{" "}
+          {dropdownVisible && (
+            <div className="dropdown-menu">
+              {" "}
+              <Link
+                to="/AddPostPage"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <b>Post Blog</b>
+              </Link>
+              <Link
+                to="/PostImage"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <b>Add Image </b>
+              </Link>
+            </div>
+          )}
         </li>
         <li>
           <Link to="/Search" style={{ textDecoration: "none", color: "white" }}>
