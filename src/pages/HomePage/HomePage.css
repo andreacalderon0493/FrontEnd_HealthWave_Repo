@@ -1,0 +1,54 @@
+.sort-button-like{
+    border: none;
+    background-image: url(/public/heart-icon_360.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    color: white;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+}
+.sort-button-comment{
+    border: none;
+    background-image: url(/public/text-icon_360.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+}
+.sort-button-save{
+    border: none;
+    background-image: url(/public/flag-icon_360.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+}
+.posts{
+    display: inline-block;
+    width: 580px;
+    border: 7px solid black;
+    padding: 15px;
+    margin: 5px;
+}
+.like-comment{
+    display: flex;
+    justify-content: flex-start
+}
+.save-share{
+    display: flex;
+    justify-content: flex-end;
+}
+.all-icons{
+    display: flex;
+    justify-content: space-between;
+}
+.userName-icon{
+    display: flex;
+    align-items: center;
+}

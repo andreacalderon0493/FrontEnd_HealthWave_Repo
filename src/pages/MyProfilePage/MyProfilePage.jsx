@@ -34,7 +34,7 @@ const MyProfilePage = ({}) => {
       {allPosts &&
         allPosts.posts &&
         allPosts.posts.map((post) => (
-          <div key={post.id}>
+          <div className="posts" key={post.id}>
             <h3>{post.user.userName}</h3>
             <h3>{post.title}</h3>
             <h2>{post.text}</h2>
@@ -43,7 +43,7 @@ const MyProfilePage = ({}) => {
       {allPosts &&
         allPosts.sharedPosts &&
         allPosts.sharedPosts.map((sharedPost) => (
-          <div key={sharedPost.id}>
+          <div className="posts" key={sharedPost.id}>
             <h3>Repost from {sharedPost.post.user.userName} </h3>
             <h3>{sharedPost.post.title}</h3>
             <h2>{sharedPost.post.text}</h2>

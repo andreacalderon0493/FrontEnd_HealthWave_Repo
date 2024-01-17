@@ -28,13 +28,13 @@ const Navbar = () => {
               {" "}
               <Link
                 to="/AddPostPage"
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
               >
                 <b>Post Blog</b>
               </Link>
               <Link
                 to="/PostImage"
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
               >
                 <b>Add Image </b>
               </Link>

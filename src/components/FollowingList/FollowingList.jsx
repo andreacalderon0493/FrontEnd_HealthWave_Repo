@@ -2,6 +2,7 @@ import axios from "axios";
 import react, { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import "./FollowingList.css";
 
 const FolllowingList = ({ followings, setFollowings, userId }) => {
   const [isFollowing, setIsFollowing] = useState(false);
@@ -34,7 +35,10 @@ const FolllowingList = ({ followings, setFollowings, userId }) => {
   return (
     <div>
       {!isFollowing && (
-        <button onClick={() => handleFollow(userId)}>Follow</button>
+        <button
+          className="sort-button-follow"
+          onClick={() => handleFollow(userId)}
+        ></button>
       )}
     </div>
   );

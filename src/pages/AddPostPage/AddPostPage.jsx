@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import "./AddPostPage.css";
 
 const AddPostPage = ({}) => {
   const [user, token] = useAuth();
@@ -30,7 +31,7 @@ const AddPostPage = ({}) => {
     { text: "" }
   );
   return (
-    <div>
+    <div className="addPost">
       <form onSubmit={handleSubmit}>
         <input
           type="title"
@@ -39,7 +40,9 @@ const AddPostPage = ({}) => {
           onChange={handleInputChange}
           placeholder="Enter your post Title"
         />
+
         <textarea
+          className="form"
           type="text"
           name="text"
           value={formData.text}

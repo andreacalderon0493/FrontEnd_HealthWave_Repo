@@ -1,6 +1,7 @@
 import axios from "axios";
 import react from "react";
 import useAuth from "../../hooks/useAuth";
+import "./SharePost.css";
 
 const SharePost = ({ postId }) => {
   const [user, token] = useAuth();
@@ -28,7 +29,7 @@ const SharePost = ({ postId }) => {
 
   return (
     <div>
-      <button onClick={handleShare}>Share</button>
+      <button className="sort-button-share" onClick={handleShare}></button>
     </div>
   );
 };

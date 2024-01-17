@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import ImageList from "../../components/ImageList/ImageList";
 import FolllowingList from "../../components/FollowingList/FollowingList";
 import SharePost from "../../components/SharePost/SharePost";
+//Styling.css
+import "./HomePage.css";
 
 const HomePage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
@@ -95,28 +97,43 @@ const HomePage = () => {
       <h1>Welcome {user.userName}!</h1>
       {posts &&
         posts.map((post) => (
-          <div key={post.id}>
-            <h3>{post.user.userName}</h3>
-            <FolllowingList
-              followings={followings}
-              setFollowings={setFollowings}
-              userId={post.user.id}
-            />
+          <div className="posts" key={post.id}>
+            <div className="userName-icon">
+              <h3>{post.user.userName}</h3>
+              <FolllowingList
+                followings={followings}
+                setFollowings={setFollowings}
+                userId={post.user.id}
+              />
+            </div>
             <h2>{post.title}</h2>
             <h3>{post.text}</h3>
-            <button onClick={() => handleFavorite(post.id)}>Favorite</button>
-            <button onClick={() => handleLike(post.id)}>
-              Like {post.like}
-            </button>
-            <button
-              onClick={() => (window.location.href = `/addcomment/${post.id}`)}
-            >
-              Add Comment
-            </button>
-            <SharePost postId={post.id} />
+            <div className="all-icons">
+              <div className="like-comment">
+                <button
+                  className="sort-button-like"
+                  onClick={() => handleLike(post.id)}
+                >
+                  {post.like}
+                </button>
+                <button
+                  className="sort-button-comment"
+                  onClick={() =>
+                    (window.location.href = `/addcomment/${post.id}`)
+                  }
+                ></button>
+              </div>
+              <div className="save-share">
+                <SharePost postId={post.id} />
+                <button
+                  className="sort-button-save"
+                  onClick={() => handleFavorite(post.id)}
+                ></button>
+              </div>
+            </div>
           </div>
         ))}
-      <ImageList />
+      {/* <ImageList /> */}
     </div>
   );
 };

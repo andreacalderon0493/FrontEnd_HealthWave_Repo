@@ -37,25 +37,27 @@ export default function ImageForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title:</label>
-      <input
-        type="text"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      <label>Description:</label>
-      <input
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
-      Image file input
-      <input
-        type="file"
-        accept="image/jpeg,image/png,image/gif"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
-      <button type="submit">Submit!</button>
-    </form>
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <label>Title:</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <label>Description:</label>
+        <input
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+        />
+        Image file input
+        <input
+          type="file"
+          accept="image/jpeg,image/png,image/gif"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+        <button type="submit">Submit!</button>
+      </form>
+    </div>
   );
 }
