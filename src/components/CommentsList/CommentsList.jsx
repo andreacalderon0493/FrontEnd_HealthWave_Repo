@@ -2,6 +2,7 @@ import useAuth from "../../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import "./CommentsList.css";
 
 const CommentsList = ({}) => {
   const [comments, setComments] = useState([]);
@@ -33,7 +34,7 @@ const CommentsList = ({}) => {
     <div>
       {comments &&
         comments.map((comment) => (
-          <div key={comment.id}>
+          <div className="comment-list" key={comment.id}>
             <h3>{comment.user.userName}</h3>
             <h3>{comment.title}</h3>
             <h2>{comment.text}</h2>

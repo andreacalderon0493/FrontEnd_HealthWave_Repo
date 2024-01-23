@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 
 const SearchPage = ({}) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState(null);
+  const [originalPosts, setOriginalPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://localhost:5001/api/posts")
       .then((response) => {
+        setOriginalPosts(response.data);
         setFilteredPosts(response.data);
       })
       .catch((error) => {
@@ -16,21 +19,18 @@ const SearchPage = ({}) => {
       });
   }, []);
 
-  const handleSearchChange = (event) => {
-    const value = event.target.value;
-    setSearchTerm(value);
-
-    if (!value) {
-      setFilteredPosts(null);
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredPosts(originalPosts); // Reset filteredPosts to originalPosts if no search term
       return;
     }
 
-    const filtered = filteredPosts.filter((post) => {
-      return post.text.includes(value);
+    const filtered = originalPosts.filter((post) => {
+      return post.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
     setFilteredPosts(filtered);
-  };
+  }, [searchTerm]);
 
   return (
     <div>
@@ -39,7 +39,7 @@ const SearchPage = ({}) => {
         <input
           type="text"
           value={searchTerm}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search..."
         />
         <button type="submit">Submit</button>

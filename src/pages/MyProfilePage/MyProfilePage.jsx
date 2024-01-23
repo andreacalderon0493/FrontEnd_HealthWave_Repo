@@ -1,6 +1,7 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import "./MyProfilePage.css";
 
 const MyProfilePage = ({}) => {
   const [user, token] = useAuth();
@@ -30,7 +31,7 @@ const MyProfilePage = ({}) => {
   };
 
   return (
-    <div className="flex-item">
+    <div className="profile">
       {allPosts &&
         allPosts.posts &&
         allPosts.posts.map((post) => (

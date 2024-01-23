@@ -37,7 +37,7 @@ const FavoritesPage = ({}) => {
     setFavorites(filteredFavorites);
   };
   return (
-    <div className="flex">
+    <div>
       <h1>Save For Later</h1>
       <form onSubmit={handleSearch}>
         <input
@@ -50,7 +50,7 @@ const FavoritesPage = ({}) => {
 
       {favorites &&
         favorites.map((favorite) => (
-          <div className="container" key={favorite.id}>
+          <div className="container flex-item posts" key={favorite.id}>
             <h3>{favorite.post.title}</h3>
             <h2>{favorite.post.text}</h2>
           </div>

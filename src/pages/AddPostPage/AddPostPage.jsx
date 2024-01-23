@@ -21,6 +21,7 @@ const AddPostPage = ({}) => {
       );
 
       console.log(response);
+      alert("Post Submitted");
     } catch (error) {
       console.error("An error occurred while posting:", error);
     }

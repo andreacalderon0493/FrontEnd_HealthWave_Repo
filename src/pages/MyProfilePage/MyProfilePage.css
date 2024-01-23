@@ -1,0 +1,10 @@
+.profile {
+    display: flex;
+    margin: 0 auto;
+    max-width: 600px;
+    overflow: auto;
+    text-align: center;
+    color: white;
+    flex-wrap: wrap;
+    
+  }

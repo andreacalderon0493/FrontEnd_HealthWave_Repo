@@ -1,0 +1,8 @@
+.comment-page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    border: 10px;
+    padding: 10px;
+}

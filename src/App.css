@@ -10,7 +10,8 @@
 
 html {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   color: whitesmoke
 }
 
@@ -40,6 +41,8 @@ button:hover {
   overflow: auto;
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column-reverse
   
 }
 .flex-item {
@@ -49,6 +52,8 @@ button:hover {
   overflow: auto;
   text-align: center;
   color: white;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
   
 }
 

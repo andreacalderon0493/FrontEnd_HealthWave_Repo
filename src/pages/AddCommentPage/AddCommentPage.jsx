@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useParams } from "react-router-dom";
 import CommentsList from "../../components/CommentsList/CommentsList";
-
+import "./AddCommentPage.css";
 const AddCommentPage = ({}) => {
   const [commentText, setCommentText] = useState("");
   const [user, token] = useAuth();
@@ -28,6 +28,7 @@ const AddCommentPage = ({}) => {
       );
 
       console.log("Response data:", response.data);
+      alert("Comment submitted!");
     } catch (error) {
       console.log("Error:", error.response.data);
     }
@@ -35,14 +36,16 @@ const AddCommentPage = ({}) => {
 
   return (
     <div>
-      <CommentsList />
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <textarea
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
         />
         <button type="submit">Add Comment</button>
       </form>
+      <div className="comment-page">
+        <CommentsList />
+      </div>
     </div>
   );
 };

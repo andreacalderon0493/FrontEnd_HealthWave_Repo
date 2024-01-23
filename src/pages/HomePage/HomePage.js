@@ -50,7 +50,6 @@ const HomePage = () => {
         },
       });
       setPosts(response.data);
-      console.log("response.data:", response.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -93,47 +92,49 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Welcome {user.userName}!</h1>
-      {posts &&
-        posts.map((post) => (
-          <div className="posts" key={post.id}>
-            <div className="userName-icon">
-              <h3>{post.user.userName}</h3>
-              <FolllowingList
-                followings={followings}
-                setFollowings={setFollowings}
-                userId={post.user.id}
-              />
-            </div>
-            <h2>{post.title}</h2>
-            <h3>{post.text}</h3>
-            <div className="all-icons">
-              <div className="like-comment">
-                <button
-                  className="sort-button-like"
-                  onClick={() => handleLike(post.id)}
-                >
-                  {post.like}
-                </button>
-                <button
-                  className="sort-button-comment"
-                  onClick={() =>
-                    (window.location.href = `/addcomment/${post.id}`)
-                  }
-                ></button>
+    <div>
+      <div className="container">
+        {posts &&
+          posts.map((post) => (
+            <div className="posts" key={post.id}>
+              <div className="userName-icon">
+                <h3>{post.user.userName}</h3>
+                <FolllowingList
+                  followings={followings}
+                  setFollowings={setFollowings}
+                  userId={post.user.id}
+                />
               </div>
-              <div className="save-share">
-                <SharePost postId={post.id} />
-                <button
-                  className="sort-button-save"
-                  onClick={() => handleFavorite(post.id)}
-                ></button>
+              <h2>{post.title}</h2>
+              <h3>{post.text}</h3>
+              <div className="all-icons">
+                <div className="like-comment">
+                  <button
+                    className="sort-button-like"
+                    onClick={() => handleLike(post.id)}
+                  >
+                    {post.like}
+                  </button>
+                  <button
+                    className="sort-button-comment"
+                    onClick={() =>
+                      (window.location.href = `/addcomment/${post.id}`)
+                    }
+                  ></button>
+                </div>
+                <div className="save-share">
+                  <SharePost postId={post.id} />
+                  <button
+                    className="sort-button-save"
+                    onClick={() => handleFavorite(post.id)}
+                  ></button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      {/* <ImageList /> */}
+          ))}
+        <h1>Welcome {user.userName}!</h1>
+        {/* <ImageList /> */}
+      </div>
     </div>
   );
 };
